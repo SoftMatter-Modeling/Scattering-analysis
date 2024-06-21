@@ -1,0 +1,20 @@
+#CC=mpic++
+CC=mpiCC
+#CC=CC
+CFLAGS=-c 
+LDFLAGS=-lm -fast -w -ta=nvidia:cc70 -fast -mp -Minfo=accel
+INC=./lib
+SOURCES=$(INC)/read_dump_file_CC_UniTenMD.c Sinc_Cos_Sin_UniTension_MD_Ref_COM_EachBead_ACC.c
+OBJECTS=$(INC)/read_dump_file_CC_UniTenMD.o Sinc_Cos_Sin_UniTension_MD_Ref_COM_EachBead_ACC.o
+EXECUTABLE=Sinc_Cos_Sin_UniTension_MD_Ref_COM_EachBead_ACC
+
+all: $(SOURCES) $(EXECUTABLE)
+    
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.c.o:
+	$(CC) $(LDFLAGS) $(CFLAGS) $< -o $@
+
+clean:
+	rm *.o $(EXECUTABLE) $(INC)/*.o

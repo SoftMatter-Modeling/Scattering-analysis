@@ -1,0 +1,8 @@
+dumpStep  1000
+endStep   5000000
+breakStep 4580000
+initStep  4480000
+dt 0.01
+directory ../../Coord_combined/
+natom_per_chain 25
+flag_correct  0
